@@ -35,11 +35,11 @@ public class Startup
 
         app.UseCors("AllowSpecificOrigin");
 
-        // app.UseStaticFiles(new StaticFileOptions {
-        //     FileProvider = new PhysicalFileProvider(
-        //         Path.Combine(env.ContentRootPath, "wwwroot")),
-        //     RequestPath = ""
-        // });
+        app.UseStaticFiles(new StaticFileOptions {
+            FileProvider = new PhysicalFileProvider(
+                Path.Combine(env.ContentRootPath, "wwwroot")),
+            RequestPath = ""
+        });
 
         // Apply migrations to ensure the database schema is up-to-date
         context.Database.Migrate();

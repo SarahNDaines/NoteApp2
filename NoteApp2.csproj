@@ -17,4 +17,16 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="wwwroot\**\*" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PrePublishScript>buildCopyFront.sh</PrePublishScript>
+  </PropertyGroup>
+
+  <Target Name="PrePublish" BeforeTargets="Publish">
+    <Exec Command="bash $(PrePublishScript)" />
+  </Target>
+
 </Project>
