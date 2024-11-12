@@ -120,12 +120,28 @@ dotnet add package Microsoft.AspNetCore.Cors
 
 ### Setup Frontend
 
+1. Add Note Create, and Note List components
+
+2. Add Note Service
+
+3. update App.tsx
+
+4. Add Axios dependency for routing
+```
+npm install axios
+```
+
+5. add button to add note
+
+6. Add back button to create note
+
 ### Executable
 
 - Note.csproj
 add the following code to NoteApp.csproj. This tells it which folder to look for the static files for the frontend. Where the script is to build the frontend and then copy it to wwwroot. Also when to run that script.
 
-```  <ItemGroup>
+```
+  <ItemGroup>
     <Content Include="wwwroot\**\*" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 

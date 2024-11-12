@@ -1,7 +1,6 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -32,22 +31,24 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import NoteList from './components/NoteList';
+import NoteCreate from './components/NoteCreate';
+import { Suspense } from 'react';
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
+      <Suspense fallback={<div>Loading...</div>}>
+        <IonRouterOutlet>
+          <Route path="/notes" component={NoteList} exact={true} />
+          <Route path="/create" component={NoteCreate} exact={true} />
+          <Redirect from="/" to="/notes" exact={true} />
+        </IonRouterOutlet>
+      </Suspense>
     </IonReactRouter>
   </IonApp>
 );
 
-export default App;
+export default App
