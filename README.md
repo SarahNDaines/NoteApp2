@@ -83,6 +83,8 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 
 - setup Program.cs to use Startup.cs file
 
+    - comment out the code in Startup.cs to use wwwroot for static files until folder is created in frontend.
+
 3. Creating the API controller
 
 - Create a new Controllers directory and add a NotesController.cs file for your API controller:
@@ -95,6 +97,14 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
+
+5. Change Backend address
+
+- execute `dotnet run` from the backend to deploy the backend. It will have text that reads something like "Now listening on: http://localhost:5178". My backend is made avaible at port `5178`. This is unique per dotnet project (I think). For instruction consistency. Copy and replace all instances of `5178` with `5000`.
+
+6. Test in Postman
+
+- start backend again `dotnet run`. Tested getting all notes, get note by id, adding note, updating note, and deleting note
 
 ### Ensuring communication is allowed between front and backend
 
